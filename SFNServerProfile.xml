@@ -1,19 +1,19 @@
-<entry name="threattoSFN35">
+<entry name="gtptoSFN35">
    <server>
-     <entry name="SFN35_threat">
+     <entry name="SFN35_gtp">
        <transport>UDP</transport>
-       <port>5514</port>
+       <port>5516</port>
        <format>BSD</format>
        <server>{{ SFN35ServerIP }}</server>
        <facility>LOG_USER</facility>
      </entry>
    </server>
 </entry>
-<entry name="gtptoSFN35">
+<entry name="threattoSFN35">
    <server>
-     <entry name="SFN35_gtp">
+     <entry name="SFN35_threat">
        <transport>UDP</transport>
-       <port>5516</port>
+       <port>5514</port>
        <format>BSD</format>
        <server>{{ SFN35ServerIP }}</server>
        <facility>LOG_USER</facility>

@@ -50,9 +50,9 @@ snippets:
    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
    file: AddrObject.xml
 
- - name: SFNSyslogSrv
+ - name: SFNServerProfile
    xpath: /config/shared/log-settings/syslog
-   file: SFNSyslogSrv.xml
+   file: SFNServerProfile.xml
 
  - name: Interface
    xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface
@@ -81,6 +81,6 @@ snippets:
    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/sctp/entry
    file: SCTPProfileCommonS6SS7.static.xml
 
- - name: SFNSyslogProf
+ - name: SFNForwardingProfile
    xpath: /config/shared/log-settings/profiles
-   file: SFNSyslogProf.static.xml
+   file: SFNForwardingProfile.static.xml
