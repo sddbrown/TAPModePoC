@@ -13,25 +13,23 @@ labels:
 # end of preamble section
 # ---------------------------------------------------------------------
 # variables section
-# whenever you edit this skillet and add variables below keep it short and crisp
-# the idea is not to replace one GUI with another but to have one easy button
+#
 variables:
 #
  - name: UEIPPool
-   description: IP Pool for own subscribers UE (private IPs that often overlap for roaming subs)
+   description: IP Pool for own subscribers UE
    default: 100.64.0.0/16
    type_hint: text
 
  - name: SFN35ServerIP
-   description: IP address of SFN3.5 Server (do not put a netmask here)
+   description: IP address of SFN3.5 Server
    default: 10.0.0.1
    type_hint: text
 
  - name: TAPNIC
-   description: Interface for TAP zone (skillet hangs if nic not free for conf into TAPZONE)
+   description: Interface for TAP zone
    default: ethernet1/1
    type_hint: text
-
 #
 # ---------------------------------------------------------------------
 # snippets section
@@ -40,8 +38,29 @@ variables:
 # files will load in the order listed
 snippets:
 #
+ - name: Objects
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
+   file: AddrObject.xml
+
+ - name: SFNServerProfile
+   xpath: /config/shared/log-settings/syslog
+   file: SFNServerProfile.xml
+
+ - name: Interface
+   xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface/ethernet
+   file: TAPNIC.xml
+
+ - name: Zone
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
+   file: Zone.xml
+
+ - name: Rules
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules
+   file: RulesPOCTAPGeneric.xml
+
+#
 #---------------------------------------------------------------------
-# Static Snippets (no variables at all)
+# Static Section from seconf Worksheet (no variables at all)
 #---------------------------------------------------------------------
  - name: DiskLogQuotaAndEnableSCTPGTP
    xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig
@@ -66,28 +85,3 @@ snippets:
  - name: SFNForwardingProfile
    xpath: /config/shared/log-settings/profiles
    file: SFNForwardingProfile.static.xml
-#---------------------------------------------------------------------
-# Dynamic Snippets (i.e. those here below use variables)
-#---------------------------------------------------------------------
-
- - name: Objects
-   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
-   file: AddrObject.xml
-
- - name: SFNServerProfile
-   xpath: /config/shared/log-settings/syslog
-   file: SFNServerProfile.xml
-
- - name: Interface
-   xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface/ethernet
-   file: TAPNIC.xml
-
- - name: Zone
-   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
-   file: Zone.xml
-
- - name: Rules
-   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules
-   file: RulesPOCTAPGeneric.xml
-
-#
