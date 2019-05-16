@@ -1,9 +1,4 @@
 # ---------------------------------------------------------------------
-# NOTE: This file has been automatically generated with SkilletStamper
-# to get the complete information and doc on what is done here go to
-# 'https://github.com/PaloAltoNetworks/panhandler/blob/develop/docs/metadata_configuration.rst'
-#
-# ---------------------------------------------------------------------
 # skillet preamble information used by panhandler
 # unique snippet name
 name: TAPModePoC
@@ -30,12 +25,12 @@ variables:
    type_hint: text
 
  - name: SFN35ServerIP
-   description: IP address of SFN3.5 Server (do not put netmask!)
+   description: IP address of SFN3.5 Server
    default: 10.0.0.1
    type_hint: text
 
  - name: TAPNIC
-   description: Interface for TAP zone (will only work if that NIC is free!)
+   description: Interface for TAP zone
    default: ethernet1/1
    type_hint: text
 #
