@@ -31,5 +31,7 @@ Do not forget to fill the "Sheets for all" on the Speedboat page, please.
 ##### Purpose of that Policy
 As much of the protection is provided by the Vulnerability and Protection Profiles, it would also possible but inconvenient to handle all traffic in one single rule. The purpose of separating by App-ID is, to learn quickly which IP addresses trigger on which rule, so that the traffic and role of NFs/NEs can be understood.    
  
+##### PanOS Version
+This has been tested with PanOS version 9.0.1. Specifics like e.g. enabling Packet Capture Feature in the GTP Profile or havni UUIDs in the XML for the FW rules have been avoided. We would love to hear someone tested it with 8.1
 
 
