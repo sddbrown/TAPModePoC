@@ -1,9 +1,4 @@
 # ---------------------------------------------------------------------
-# NOTE: This file has been automatically generated with SkilletStamper
-# to get the complete information and doc on what is done here go to
-# 'https://github.com/PaloAltoNetworks/panhandler/blob/develop/docs/metadata_configuration.rst'
-#
-# ---------------------------------------------------------------------
 # skillet preamble information used by panhandler
 # unique snippet name
 name: TAPModePoC
@@ -18,26 +13,25 @@ labels:
 # end of preamble section
 # ---------------------------------------------------------------------
 # variables section
-# SkilletStamper is to avoid exhaustive variables sections and produce hardcoded
-# XML snippets instead based on an excel sheet. You can however use variables here
-# and edit/change the values in PanHandler as you are used to. Mind, that for this
-# case you have to ensure that your variables are inside the XML snippets
+# whenever you edit this skillet and add variables below keep it short and crisp
+# the idea is not to replace one GUI with another but to have one easy button
 variables:
 #
  - name: UEIPPool
-   description: IP Pool for own subscribers UE
+   description: IP Pool for own subscribers UE (private IPs that often overlap for roaming subs)
    default: 100.64.0.0/16
    type_hint: text
 
  - name: SFN35ServerIP
-   description: IP address of SFN3.5 Server
+   description: IP address of SFN3.5 Server (do not put a netmask here)
    default: 10.0.0.1
    type_hint: text
 
  - name: TAPNIC
-   description: Interface for TAP zone
+   description: Interface for TAP zone (skillet hangs if nic not free for conf into TAPZONE)
    default: ethernet1/1
    type_hint: text
+
 #
 # ---------------------------------------------------------------------
 # snippets section
@@ -46,6 +40,36 @@ variables:
 # files will load in the order listed
 snippets:
 #
+#---------------------------------------------------------------------
+# Static Snippets (no variables at all)
+#---------------------------------------------------------------------
+ - name: DiskLogQuotaAndEnableSCTPGTP
+   xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig
+   file: DiskLogQuotaAndEnableSCTPGTP.static.xml
+
+ - name: ZoneProtect_IPOnly
+   xpath: /config/devices/entry[@name='localhost.localdomain']/network/profiles/zone-protection-profile
+   file: ZoneProtectIPOnly.static.xml
+
+ - name: GTPProfile
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/gtp
+   file: GTPProfileLogTunnel.static.xml
+
+ - name: SCTPProfile
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/sctp
+   file: SCTPProfileCommonS6SS7.static.xml
+
+ - name: VulnProfile_FloodAndBrute
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/vulnerability
+   file: VulnProfile_FloodAndBrute.static.xml
+
+ - name: SFNForwardingProfile
+   xpath: /config/shared/log-settings/profiles
+   file: SFNForwardingProfile.static.xml
+#---------------------------------------------------------------------
+# Dynamic Snippets (i.e. those here below use variables)
+#---------------------------------------------------------------------
+
  - name: Objects
    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
    file: AddrObject.xml
@@ -67,25 +91,3 @@ snippets:
    file: RulesPOCTAPGeneric.xml
 
 #
-#---------------------------------------------------------------------
-# Static Section from seconf Worksheet (no variables at all)
-#---------------------------------------------------------------------
- - name: ZoneProtect_IPOnly
-   xpath: /config/devices/entry[@name='localhost.localdomain']/network/profiles/zone-protection-profile
-   file: ZoneProtectIPOnly.static.xml
-
- - name: GTPProfile
-   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/gtp
-   file: GTPProfileLogTunnel.static.xml
-
- - name: SCTPProfile
-   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/sctp
-   file: SCTPProfileCommonS6SS7.static.xml
-
- - name: VulnProfile_FloodAndBrute
-   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/vulnerability
-   file: VulnProfile_FloodAndBrute.static.xml
-
- - name: SFNForwardingProfile
-   xpath: /config/shared/log-settings/profiles
-   file: SFNForwardingProfile.static.xml
