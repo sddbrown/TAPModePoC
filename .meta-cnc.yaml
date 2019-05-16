@@ -27,12 +27,12 @@ variables:
  - name: UEIPPool
    description: IP Pool for own subscribers UE
    default: 100.64.0.0/16
-   type_hint: ip_address
+   type_hint: text
 
  - name: SFN35ServerIP
    description: IP address of SFN3.5 Server
    default: 10.0.0.1/32
-   type_hint: ip_address
+   type_hint: text
 
  - name: TAPNIC
    description: Interface for TAP zone
