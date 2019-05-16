@@ -1,4 +1,9 @@
 # ---------------------------------------------------------------------
+# NOTE: This file has been automatically generated with SkilletStamper
+# to get the complete information and doc on what is done here go to
+# 'https://github.com/PaloAltoNetworks/panhandler/blob/develop/docs/metadata_configuration.rst'
+#
+# ---------------------------------------------------------------------
 # skillet preamble information used by panhandler
 # unique snippet name
 name: TAPModePoC
@@ -56,14 +61,15 @@ snippets:
  - name: Zone
    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
    file: Zone.xml
+
+ - name: Rules
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules
+   file: RulesPOCTAPGeneric.xml
+
 #
-# - name: Rules
-#   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules
-#   file: RulesPOCTAPGeneric.xml
-#
-#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Static Section (no variables used in those xmls)
-#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#---------------------------------------------------------------------
+# Static Section from seconf Worksheet (no variables at all)
+#---------------------------------------------------------------------
  - name: ZoneProtect_IPOnly
    xpath: /config/devices/entry[@name='localhost.localdomain']/network/profiles/zone-protection-profile
    file: ZoneProtectIPOnly.static.xml
@@ -83,4 +89,3 @@ snippets:
  - name: SFNForwardingProfile
    xpath: /config/shared/log-settings/profiles
    file: SFNForwardingProfile.static.xml
-#
