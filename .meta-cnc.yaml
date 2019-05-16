@@ -54,14 +54,6 @@ snippets:
    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
    file: Zone.xml
 
- - name: Rules
-   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules
-   file: RulesPOCTAPGeneric.xml
-
-#
-#---------------------------------------------------------------------
-# Static Section from seconf Worksheet (no variables at all)
-#---------------------------------------------------------------------
  - name: DiskLogQuotaAndEnableSCTPGTP
    xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig
    file: DiskLogQuotaAndEnableSCTPGTP.static.xml
@@ -85,3 +77,7 @@ snippets:
  - name: SFNForwardingProfile
    xpath: /config/shared/log-settings/profiles
    file: SFNForwardingProfile.static.xml
+
+ - name: Rules
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules
+   file: RulesPOCTAPGeneric.xml
