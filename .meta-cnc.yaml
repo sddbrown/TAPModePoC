@@ -62,9 +62,9 @@ snippets:
    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
    file: Zone.xml
 
- - name: Rules
-   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules
-   file: RulesPOCTAPGeneric.xml
+# - name: Rules
+#   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules
+#   file: RulesPOCTAPGeneric.xml
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Static Section (no variables used in those xmls)
@@ -78,8 +78,12 @@ snippets:
    file: GTPProfileLogTunnel.static.xml
 
  - name: SCTPProfile
-   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/sctp/entry
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/sctp
    file: SCTPProfileCommonS6SS7.static.xml
+
+  - name: VulnProfile_FloodAndBrute
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/vulnerability
+    file: VulnProfile_FloodAndBrute.static.xml
 
  - name: SFNForwardingProfile
    xpath: /config/shared/log-settings/profiles

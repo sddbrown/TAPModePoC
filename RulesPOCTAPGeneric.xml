@@ -33,7 +33,7 @@
   <profile-setting>
     <profiles>
       <gtp>
-        <member>GTP--Common-LogTun</member>
+        <member>GTP__Common_LogTun</member>
       </gtp>
       <vulnerability>
         <member>flood-and-bruteforce</member>
