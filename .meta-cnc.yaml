@@ -30,8 +30,8 @@ variables:
    type_hint: text
 
  - name: SFN35ServerIP
-   description: IP address of SFN3.5 Server
-   default: 10.0.0.1 (do not put netmask!)
+   description: IP address of SFN3.5 Server (do not put netmask!)
+   default: 10.0.0.1
    type_hint: text
 
  - name: TAPNIC
