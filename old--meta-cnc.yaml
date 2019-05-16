@@ -1,0 +1,60 @@
+# ---------------------------------------------------------------------
+# NOTE: This file has been automatically generated with SkilletStamper
+# to get the complete information and doc on what is done here go to
+# 'https://github.com/PaloAltoNetworks/panhandler/blob/develop/docs/metadata_configuration.rst'
+#
+# ---------------------------------------------------------------------
+# skillet preamble information used by panhandler
+# unique snippet name
+name: SkilletStamper_150520191321
+# label used for menu selection
+label: a
+description: q
+type: panos
+extends:
+labels:
+  collection:
+    - x
+# end of preamble section
+# ---------------------------------------------------------------------
+# variables section
+# SkilletStamper is to avoid exhaustive variables sections and produce hardcoded
+# XML snippets instead based on an excel sheet. You can however use variables here
+# and edit/change the values in PanHandler as you are used to. Mind, that for this
+# case you have to ensure that your variables are inside the XML snippets
+variables:
+#
+# ---------------------------------------------------------------------
+# snippets section
+# ---------------------------------------------------------------------
+# snippets used for api configuration including xpath and element as file name
+# files will load in the order listed
+snippets:
+#
+ - name: ObjectTags
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/tag
+   file: ObjectTags.150520191321.xml
+
+ - name: Objects
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
+   file: Objects.150520191321.xml
+
+ - name: SFNSyslogSrv
+   xpath: /config/shared/log-settings/syslog
+   file: SFNSyslogSrv.150520191321.xml
+
+ - name: SFNSyslogProf
+   xpath: /config/shared/log-settings/profiles
+   file: SFNSyslogProf.150520191321.xml
+
+#---------------------------------------------------------------------
+# Static Section from seconf Worksheet (no variables at all)
+#---------------------------------------------------------------------
+ - name: ZoneProtect_IPOnly
+   xpath: /config/devices/entry[@name='localhost.localdomain']/network/profiles/zone-protection-profile
+   file: ZoneProtectIPOnly_static.xml
+
+ - name: GTPProfileAlert
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/gtp
+   file: GTPProfileAlert_static.xml
+

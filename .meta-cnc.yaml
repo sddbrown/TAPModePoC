@@ -1,20 +1,15 @@
 # ---------------------------------------------------------------------
-# NOTE: This file has been automatically generated with SkilletStamper
-# to get the complete information and doc on what is done here go to
-# 'https://github.com/PaloAltoNetworks/panhandler/blob/develop/docs/metadata_configuration.rst'
-#
-# ---------------------------------------------------------------------
 # skillet preamble information used by panhandler
 # unique snippet name
-name: SkilletStamper_150520191321
+name: TAPModePoC
 # label used for menu selection
-label: a
-description: q
+label: TAP Mode PoC
+description: Generic config for TAP mode to start a PoC
 type: panos
 extends:
 labels:
   collection:
-    - x
+    - MobileSkillet
 # end of preamble section
 # ---------------------------------------------------------------------
 # variables section
@@ -24,6 +19,21 @@ labels:
 # case you have to ensure that your variables are inside the XML snippets
 variables:
 #
+ - name: UEIPPool
+   description: IP Pool for own subscribers UE
+   default: 100.64.0.0/16
+   type_hint: text
+
+ - name: SFN35ServerIP
+   description: IP address of SFN3.5 Server
+   default: 10.0.0.1
+   type_hint: text
+
+ - name: TAPNIC
+   description: Interface for TAP zone
+   default: ethernet1/1
+   type_hint: text
+#
 # ---------------------------------------------------------------------
 # snippets section
 # ---------------------------------------------------------------------
@@ -31,30 +41,46 @@ variables:
 # files will load in the order listed
 snippets:
 #
- - name: ObjectTags
-   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/tag
-   file: ObjectTags.150520191321.xml
-
  - name: Objects
    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
-   file: Objects.150520191321.xml
+   file: AddrObject.xml
 
- - name: SFNSyslogSrv
+ - name: SFNServerProfile
    xpath: /config/shared/log-settings/syslog
-   file: SFNSyslogSrv.150520191321.xml
+   file: SFNServerProfile.xml
 
- - name: SFNSyslogProf
-   xpath: /config/shared/log-settings/profiles
-   file: SFNSyslogProf.150520191321.xml
+ - name: Interface
+   xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface/ethernet
+   file: TAPNIC.xml
 
-#---------------------------------------------------------------------
-# Static Section from seconf Worksheet (no variables at all)
-#---------------------------------------------------------------------
+ - name: Zone
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
+   file: Zone.xml
+#
+# - name: Rules
+#   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules
+#   file: RulesPOCTAPGeneric.xml
+#
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Static Section (no variables used in those xmls)
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  - name: ZoneProtect_IPOnly
    xpath: /config/devices/entry[@name='localhost.localdomain']/network/profiles/zone-protection-profile
-   file: ZoneProtectIPOnly_static.xml
+   file: ZoneProtectIPOnly.static.xml
 
- - name: GTPProfileAlert
+ - name: GTPProfile
    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/gtp
-   file: GTPProfileAlert_static.xml
+   file: GTPProfileLogTunnel.static.xml
 
+ - name: SCTPProfile
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/sctp
+   file: SCTPProfileCommonS6SS7.static.xml
+
+ - name: VulnProfile_FloodAndBrute
+   xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/vulnerability
+   file: VulnProfile_FloodAndBrute.static.xml
+
+ - name: SFNForwardingProfile
+   xpath: /config/shared/log-settings/profiles
+   file: SFNForwardingProfile.static.xml
+#
