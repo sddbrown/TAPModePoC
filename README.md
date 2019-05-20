@@ -9,7 +9,7 @@ add or If you can not access it create your own repo and push the archive that c
 
 
 #### Need to know
-In the current status this skillet is only a defined starting point and mot likely not what you need at the end of the PoC.
+In the current status this skillet is only a defined starting point and most likely not what you need at the end of the PoC.
 Your contribution to improvement should go the usual yet undefined way of using github and internal channels!
 
 Let us know what needs to be adapted.
