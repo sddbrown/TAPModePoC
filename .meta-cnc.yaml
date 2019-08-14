@@ -1,15 +1,15 @@
 # ---------------------------------------------------------------------
 # skillet preamble information used by panhandler
 # unique snippet name
-name: TAPModePoC
+name: MobileTAPModePoC
 # label used for menu selection
-label: TAP Mode PoC
+label: Mobile TAP Mode PoC
 description: Generic config for TAP mode to start a PoC
 type: panos
 extends:
 labels:
   collection:
-    - MobileSkillet
+    - SafeNetworking
 # end of preamble section
 # ---------------------------------------------------------------------
 # variables section
