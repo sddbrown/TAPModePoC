@@ -4,7 +4,7 @@
 name: MobileTAPModePoC
 # label used for menu selection
 label: Mobile TAP Mode PoC
-description: Generic config for TAP mode to start a PoC
+description: Mobile Skillet to start a TAP Mode PoC
 type: panos
 extends:
 labels:
